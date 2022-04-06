@@ -83,7 +83,7 @@ public class PotionOfCleansing extends ExoticPotion {
 
 	public static class Cleanse extends FlavourBuff {
 
-		public static final float DURATION = 5f;
+		public static final float DURATION = 10f;
 
 		@Override
 		public int icon() {

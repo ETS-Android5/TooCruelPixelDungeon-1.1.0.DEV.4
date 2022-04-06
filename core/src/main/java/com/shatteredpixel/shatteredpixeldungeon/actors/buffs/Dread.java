@@ -13,7 +13,7 @@ public class Dread extends Buff {
 	protected int left = (int)DURATION;
 	public int object = 0;
 
-	public static final float DURATION = 20f;
+	public static final float DURATION = 30f;
 
 	{
 		type = buffType.NEGATIVE;
@@ -39,7 +39,7 @@ public class Dread extends Buff {
 	public boolean act() {
 
 		if (!Dungeon.level.heroFOV[target.pos()]
-				&& Dungeon.level.distance(target.pos(), Dungeon.hero.pos()) >= 6) {
+				&& Dungeon.level.distance(target.pos(), Dungeon.hero.pos()) >= 3) {
 			Actor.remove( target );
 			target.sprite.killAndErase();
 			Dungeon.level.removeMob(target);

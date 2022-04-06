@@ -44,10 +44,10 @@ public class PotionOfShielding extends ExoticPotion {
             PotionOfHealing.pharmacophobiaProc(hero);
         }
         if ( Challenges.THUNDERSTRUCK.enabled() ) {
-            Buff.prolong( hero, AnkhInvulnerability.class, 3f );
+            Buff.prolong( hero, AnkhInvulnerability.class, 6f );
         }
         //~75% of a potion of healing
-        Buff.affect(hero, Barrier.class).setShield((int) (0.6f * hero.HT + 10));
+        Buff.affect(hero, Barrier.class).setShield((int) (1.2f * hero.HT + 10));
         Talent.onHealingPotionUsed(hero);
     }
 }

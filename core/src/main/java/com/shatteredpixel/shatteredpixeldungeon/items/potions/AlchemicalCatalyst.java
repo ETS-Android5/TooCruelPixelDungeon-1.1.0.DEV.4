@@ -20,11 +20,27 @@
  */
 
 package com.shatteredpixel.shatteredpixeldungeon.items.potions;
-
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.elixirs.ElixirOfAquaticRejuvenation;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.elixirs.ElixirOfArcaneArmor;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.elixirs.ElixirOfDragonsBlood;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.elixirs.ElixirOfHoneyedHealing;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.elixirs.ElixirOfIcyTouch;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.elixirs.ElixirOfMight;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.elixirs.ElixirOfToxicEssence;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfCleansing;
 import com.shatteredpixel.shatteredpixeldungeon.Challenges;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.ExoticPotion;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfDivineInspiration;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfDragonsBreath;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfEarthenArmor;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfMagicalSight;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfMastery;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfShielding;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfShroudingFog;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfSnapFreeze;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfStormClouds;
 import com.shatteredpixel.shatteredpixeldungeon.items.stones.Runestone;
 import com.shatteredpixel.shatteredpixeldungeon.plants.Plant;
 import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
@@ -43,7 +59,7 @@ public class AlchemicalCatalyst extends Potion {
 	
 	private static HashMap<Class<? extends Potion>, Float> potionChances = new HashMap<>();
 	static{
-		potionChances.put(PotionOfHealing.class,        3f);
+		potionChances.put(PotionOfHealing.class,        2f);
 		potionChances.put(PotionOfMindVision.class,     2f);
 		potionChances.put(PotionOfFrost.class,          2f);
 		potionChances.put(PotionOfLiquidFlame.class,    2f);
@@ -53,7 +69,30 @@ public class AlchemicalCatalyst extends Potion {
 		potionChances.put(PotionOfLevitation.class,     2f);
 		potionChances.put(PotionOfParalyticGas.class,   2f);
 		potionChances.put(PotionOfPurity.class,         2f);
-		potionChances.put(PotionOfExperience.class,     1f);
+		potionChances.put(PotionOfExperience.class,     2f);
+		potionChances.put(PotionOfStrength.class,       2f);
+		potionChances.put(PotionOfCleansing.class,      2f);
+		potionChances.put(PotionOfDivineInspiration.class,      2f);
+		potionChances.put(PotionOfDragonsBreath.class,      2f);
+		potionChances.put(PotionOfEarthenArmor.class,      2f);
+		potionChances.put(PotionOfMagicalSight.class,      2f);
+		potionChances.put(PotionOfMastery.class,      2f);
+		potionChances.put(PotionOfShielding.class,      2f);
+		potionChances.put(PotionOfShroudingFog.class,      2f);
+		potionChances.put(PotionOfSnapFreeze.class,      2f);
+		potionChances.put(PotionOfStormClouds.class,      2f);
+		potionChances.put(ElixirOfAquaticRejuvenation.class,      2f);
+		potionChances.put(ElixirOfArcaneArmor.class,      2f);
+		potionChances.put(ElixirOfDragonsBlood.class,      2f);
+		potionChances.put(ElixirOfHoneyedHealing.class,      2f);
+		potionChances.put(ElixirOfIcyTouch.class,      2f);
+		potionChances.put(ElixirOfMight.class,      2f);
+		potionChances.put(ElixirOfToxicEssence.class,      2f);
+
+
+
+
+
 	}
 	
 	@Override

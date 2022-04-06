@@ -72,7 +72,7 @@ public class ScrollOfChallenge extends ExoticScroll {
 		private ArrayList<Integer> arenaPositions = new ArrayList<>();
 		private ArrayList<Emitter> arenaEmitters = new ArrayList<>();
 
-		private static final float DURATION = 100;
+		private static final float DURATION = 150;
 		int left = 0;
 
 		{
@@ -205,7 +205,7 @@ public class ScrollOfChallenge extends ExoticScroll {
 
 		@Override
 		public float damageMultiplier( Object source ) {
-			return 0.67f;
+			return 0.5f;
 		}
 	}
 	

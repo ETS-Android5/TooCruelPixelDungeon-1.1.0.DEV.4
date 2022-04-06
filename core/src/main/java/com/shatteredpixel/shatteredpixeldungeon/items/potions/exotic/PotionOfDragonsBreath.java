@@ -128,10 +128,10 @@ public class PotionOfDragonsBreath extends ExoticPotion {
 
 						final Ballistica bolt = new Ballistica(curUser.pos(), cell, Ballistica.WONT_STOP);
 
-						int maxDist = 6;
+						int maxDist = 9;
 						int dist = Math.min(bolt.dist, maxDist);
 
-						final ConeAOE cone = new ConeAOE(bolt, 6, 60, Ballistica.STOP_SOLID | Ballistica.STOP_TARGET | Ballistica.IGNORE_SOFT_SOLID);
+						final ConeAOE cone = new ConeAOE(bolt, 9, 90, Ballistica.STOP_SOLID | Ballistica.STOP_TARGET | Ballistica.IGNORE_SOFT_SOLID);
 
 						//cast to cells at the tip, rather than all cells, better performance.
 						for (Ballistica ray : cone.outerRays){

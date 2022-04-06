@@ -29,9 +29,9 @@ import com.watabou.noosa.Image;
 
 public class MagicalSight extends FlavourBuff {
 	
-	public static final float DURATION = 50f;
+	public static final float DURATION = 75f;
 	
-	public static final int DISTANCE = 12;
+	public static final int DISTANCE = 18;
 	
 	{
 		type = buffType.POSITIVE;

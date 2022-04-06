@@ -28,9 +28,9 @@ import com.shatteredpixel.shatteredpixeldungeon.ui.BuffIndicator;
 
 public class Foresight extends FlavourBuff {
 
-	public static final float DURATION = 250f;
+	public static final float DURATION = 375f;
 
-	public static final int DISTANCE = 8;
+	public static final int DISTANCE = 12;
 
 	{
 		type = buffType.POSITIVE;

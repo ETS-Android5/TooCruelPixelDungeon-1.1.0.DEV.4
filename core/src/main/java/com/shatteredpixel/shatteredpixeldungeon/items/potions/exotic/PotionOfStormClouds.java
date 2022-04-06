@@ -47,12 +47,12 @@ public class PotionOfStormClouds extends ExoticPotion {
 			Sample.INSTANCE.play( Assets.Sounds.GAS );
 		}
 
-		int centerVolume = 120;
+		int centerVolume = 180;
 		for (int i : PathFinder.NEIGHBOURS8){
 			if (!Dungeon.level.solid[cell+i]){
-				GameScene.add( Blob.seed( cell+i, 120, StormCloud.class ) );
+				GameScene.add( Blob.seed( cell+i, 180, StormCloud.class ) );
 			} else {
-				centerVolume += 120;
+				centerVolume += 180;
 			}
 		}
 		
