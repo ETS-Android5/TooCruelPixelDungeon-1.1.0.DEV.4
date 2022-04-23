@@ -90,7 +90,7 @@ public class HighGrass {
 				//berries try to drop on floors 2/3/4/6/7/8, to a max of 4/6
 				Talent.NatureBerriesAvailable berries = ch.buff(Talent.NatureBerriesAvailable.class);
 				if (berries != null) {
-					int targetFloor = 2 + 2*((Hero)ch).pointsInTalent(Talent.NATURES_BOUNTY);
+					int targetFloor = 4 + 4*((Hero)ch).pointsInTalent(Talent.NATURES_BOUNTY);
 					targetFloor -= berries.count();
 					targetFloor += (targetFloor >= 5) ? 3 : 2;
 

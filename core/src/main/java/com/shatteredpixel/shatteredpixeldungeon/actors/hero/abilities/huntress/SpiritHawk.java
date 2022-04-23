@@ -148,12 +148,12 @@ public class SpiritHawk extends ArmorAbility {
 		{
 			spriteClass = HawkSprite.class;
 
-			HP = HT = 10;
+			HP = HT = 20;
 			defenseSkill = 60;
 
 			flying = true;
-			viewDistance = (int)GameMath.gate(6, 6+Dungeon.hero.pointsInTalent(Talent.EAGLE_EYE), 8);
-			baseSpeed = 2f + Dungeon.hero.pointsInTalent(Talent.SWIFT_SPIRIT)/2f;
+			viewDistance = (int)GameMath.gate(12, 12+Dungeon.hero.pointsInTalent(Talent.EAGLE_EYE), 8);
+			baseSpeed = 4f + Dungeon.hero.pointsInTalent(Talent.SWIFT_SPIRIT)/2f;
 			attacksAutomatically = false;
 
 			immunities.addAll(new BlobImmunity().immunities());
@@ -171,7 +171,7 @@ public class SpiritHawk extends ArmorAbility {
 		@Override
 		public int defenseSkill(Char enemy) {
 			if (Dungeon.hero.hasTalent(Talent.SWIFT_SPIRIT) &&
-					dodgesUsed < 1 + Dungeon.hero.pointsInTalent(Talent.SWIFT_SPIRIT)) {
+					dodgesUsed < 2 + Dungeon.hero.pointsInTalent(Talent.SWIFT_SPIRIT)) {
 				dodgesUsed++;
 				return Char.INFINITE_EVASION;
 			}
@@ -180,14 +180,14 @@ public class SpiritHawk extends ArmorAbility {
 
 		@Override
 		public int damageRoll() {
-			return Random.NormalIntRange(5, 10);
+			return Random.NormalIntRange(10, 20);
 		}
 
 		@Override
 		public int attackProc(Char enemy, int damage) {
 			damage = super.attackProc( enemy, damage );
 			if (Dungeon.hero.hasTalent(Talent.GO_FOR_THE_EYES)) {
-				Buff.prolong( enemy, Blindness.class, 2*Dungeon.hero.pointsInTalent(Talent.GO_FOR_THE_EYES) );
+				Buff.prolong( enemy, Blindness.class, 4*Dungeon.hero.pointsInTalent(Talent.GO_FOR_THE_EYES) );
 			}
 
 			return damage;
@@ -199,8 +199,8 @@ public class SpiritHawk extends ArmorAbility {
 				die(null);
 				return true;
 			}
-			viewDistance = (int)GameMath.gate(6, 6+Dungeon.hero.pointsInTalent(Talent.EAGLE_EYE), 8);
-			baseSpeed = 2f + Dungeon.hero.pointsInTalent(Talent.SWIFT_SPIRIT)/2f;
+			viewDistance = (int)GameMath.gate(12, 12+Dungeon.hero.pointsInTalent(Talent.EAGLE_EYE), 8);
+			baseSpeed = 4f + Dungeon.hero.pointsInTalent(Talent.SWIFT_SPIRIT)/2f;
 			boolean result = super.act();
 			Dungeon.level.updateFieldOfView( this, fieldOfView );
 			GameScene.updateFog(pos(), viewDistance+(int)Math.ceil(speed()));

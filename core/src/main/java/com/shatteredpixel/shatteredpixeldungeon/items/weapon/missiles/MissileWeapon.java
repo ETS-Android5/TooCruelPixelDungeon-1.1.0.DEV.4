@@ -197,7 +197,7 @@ abstract public class MissileWeapon extends Weapon {
 	public float accuracyFactor(Char owner) {
 		float accFactor = super.accuracyFactor(owner);
 		if (owner instanceof Hero && owner.buff(Momentum.class) != null && owner.buff(Momentum.class).freerunning()){
-			accFactor *= 1f + 0.2f*((Hero) owner).pointsInTalent(Talent.PROJECTILE_MOMENTUM);
+			accFactor *= 4f + 0.8f*((Hero) owner).pointsInTalent(Talent.PROJECTILE_MOMENTUM);
 		}
 		return accFactor;
 	}
@@ -227,7 +227,7 @@ abstract public class MissileWeapon extends Weapon {
 
 	@Override
 	public int proc(Char attacker, Char defender, int damage) {
-		if (attacker == Dungeon.hero && Random.Int(3) < Dungeon.hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)){
+		if (attacker == Dungeon.hero && Random.Int(6) < Dungeon.hero.pointsInTalent(Talent.SHARED_ENCHANTMENT)){
 			if (this instanceof Dart && ((Dart) this).crossbowHasEnchant(Dungeon.hero)){
 				//do nothing
 			} else {

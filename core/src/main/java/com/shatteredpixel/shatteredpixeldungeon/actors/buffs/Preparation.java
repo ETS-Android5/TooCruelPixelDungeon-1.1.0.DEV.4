@@ -72,9 +72,9 @@ public class Preparation extends Buff implements ActionIndicator.Action {
 
 		//1st index is prep level, 2nd is talent level
 		private static final float[][] KOThresholds = new float[][]{
-				{.03f, .04f, .05f, .06f},
-				{.10f, .13f, .17f, .20f},
-				{.20f, .27f, .33f, .40f},
+				{.06f, .08f, .10f, .12f},
+				{.20f, .26f, .34f, .40f},
+				{.40f, .54f, .66f, .80f},
 				{.50f, .67f, .83f, 1.0f}
 		};
 
@@ -84,10 +84,10 @@ public class Preparation extends Buff implements ActionIndicator.Action {
 
 		//1st index is prep level, 2nd is talent level
 		private static final int[][] blinkRanges = new int[][]{
-				{1, 1, 2, 2},
-				{2, 3, 4, 5},
-				{3, 4, 6, 7},
-				{4, 6, 8, 10}
+				{2, 2, 4, 4},
+				{4, 6, 8, 10},
+				{6, 8, 12, 14},
+				{8, 12, 16, 20}
 		};
 
 		public int blinkDistance(){
@@ -105,11 +105,11 @@ public class Preparation extends Buff implements ActionIndicator.Action {
 		
 		public int damageRoll( Char attacker ){
 			int dmg = attacker.damageRoll();
-			for( int i = 1; i < damageRolls; i++){
+			for( int i = 2; i < damageRolls; i++){
 				int newDmg = attacker.damageRoll();
 				if (newDmg > dmg) dmg = newDmg;
 			}
-			return Math.round(dmg * (1f + baseDmgBonus));
+			return Math.round(dmg * (2f + baseDmgBonus));
 		}
 		
 		public static AttackLevel getLvl(int turnsInvis){

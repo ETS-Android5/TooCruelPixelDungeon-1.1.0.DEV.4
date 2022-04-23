@@ -68,7 +68,7 @@ public class SmokeBomb extends ArmorAbility {
 			return super.chargeUse(hero);
 		} else {
 			//reduced charge use by 20%/36%/50%/60%
-			return (float)(super.chargeUse(hero) * Math.pow(0.795, hero.pointsInTalent(Talent.SHADOW_STEP)));
+			return (float)(super.chargeUse(hero) * Math.pow(0.3975, hero.pointsInTalent(Talent.SHADOW_STEP)));
 		}
 	}
 
@@ -116,7 +116,7 @@ public class SmokeBomb extends ArmorAbility {
 
 				if (hero.hasTalent(Talent.HASTY_RETREAT)){
 					//effectively 1/2/3/4 turns
-					float duration = 0.67f + hero.pointsInTalent(Talent.HASTY_RETREAT);
+					float duration = 0.335f + hero.pointsInTalent(Talent.HASTY_RETREAT);
 					Buff.affect(hero, Haste.class, duration);
 					Buff.affect(hero, Invisibility.class, duration);
 				}
@@ -157,13 +157,13 @@ public class SmokeBomb extends ArmorAbility {
 
 			alignment = Alignment.ALLY;
 
-			HP = HT = 20*Dungeon.hero.pointsInTalent(Talent.BODY_REPLACEMENT);
+			HP = HT = 40*Dungeon.hero.pointsInTalent(Talent.BODY_REPLACEMENT);
 		}
 
 		@Override
 		public int drRoll() {
 			return Random.NormalIntRange(Dungeon.hero.pointsInTalent(Talent.BODY_REPLACEMENT),
-					3*Dungeon.hero.pointsInTalent(Talent.BODY_REPLACEMENT));
+					6*Dungeon.hero.pointsInTalent(Talent.BODY_REPLACEMENT));
 		}
 
 		{

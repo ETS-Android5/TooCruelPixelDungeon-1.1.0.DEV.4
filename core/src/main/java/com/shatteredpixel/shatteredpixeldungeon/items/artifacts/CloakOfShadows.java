@@ -172,8 +172,8 @@ public class CloakOfShadows extends Artifact {
 	@Override
 	public void charge(Hero target, float amount) {
 		if (charge < chargeCap) {
-			if (!isEquipped(target)) amount *= 0.5f*target.pointsInTalent(Talent.LIGHT_CLOAK)/3f;
-			partialCharge += 0.25f*amount;
+			if (!isEquipped(target)) amount *= 1f*target.pointsInTalent(Talent.LIGHT_CLOAK)/1.5f;
+			partialCharge += 0.5f*amount;
 			if (partialCharge >= 1){
 				partialCharge--;
 				charge++;
@@ -228,7 +228,7 @@ public class CloakOfShadows extends Artifact {
 					turnsToCharge /= RingOfEnergy.artifactChargeMultiplier(target);
 					float chargeToGain = (1f / turnsToCharge);
 					if (!isEquipped(Dungeon.hero)){
-						chargeToGain *= 0.5f*Dungeon.hero.pointsInTalent(Talent.LIGHT_CLOAK)/3f;
+						chargeToGain *= 1f*Dungeon.hero.pointsInTalent(Talent.LIGHT_CLOAK)/1.5f;
 					}
 					partialCharge += chargeToGain;
 				}
@@ -296,12 +296,12 @@ public class CloakOfShadows extends Artifact {
 			//barrier every 2/1 turns, to a max of 3/5
 			if (((Hero)target).hasTalent(Talent.PROTECTIVE_SHADOWS)){
 				Barrier barrier = Buff.affect(target, Barrier.class);
-				if (barrier.shielding() < 1 + 2*((Hero)target).pointsInTalent(Talent.PROTECTIVE_SHADOWS)) {
-					barrierInc += 0.5f * ((Hero) target).pointsInTalent(Talent.PROTECTIVE_SHADOWS);
+				if (barrier.shielding() < 2 + 4*((Hero)target).pointsInTalent(Talent.PROTECTIVE_SHADOWS)) {
+					barrierInc += 1f * ((Hero) target).pointsInTalent(Talent.PROTECTIVE_SHADOWS);
 				}
-				if (barrierInc >= 1 ){
+				if (barrierInc >= 2 ){
 					barrierInc = 0;
-					barrier.incShield(1);
+					barrier.incShield(2);
 				}
 			}
 			

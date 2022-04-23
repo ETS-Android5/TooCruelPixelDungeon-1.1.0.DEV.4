@@ -73,12 +73,12 @@ public class Shockwave extends ArmorAbility {
 
 		Ballistica aim = new Ballistica(hero.pos(), target, Ballistica.WONT_STOP);
 
-		int maxDist = 5 + hero.pointsInTalent(Talent.EXPANDING_WAVE);
+		int maxDist = 5 + 2 *hero.pointsInTalent(Talent.EXPANDING_WAVE);
 		int dist = Math.min(aim.dist, maxDist);
 
 		ConeAOE cone = new ConeAOE(aim,
 				dist,
-				60 + 15*hero.pointsInTalent(Talent.EXPANDING_WAVE),
+				120 + 30*hero.pointsInTalent(Talent.EXPANDING_WAVE),
 				Ballistica.STOP_SOLID | Ballistica.STOP_TARGET);
 
 		//cast to cells at the tip, rather than all cells, better performance.

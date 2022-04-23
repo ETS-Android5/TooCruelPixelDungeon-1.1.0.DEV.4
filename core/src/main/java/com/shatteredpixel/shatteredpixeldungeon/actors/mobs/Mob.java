@@ -735,10 +735,10 @@ public abstract class Mob extends Char {
 			
 			//physical damage that doesn't come from the hero is less effective
 			if (enemy != Dungeon.hero){
-				restoration = Math.round(restoration * 0.4f*Dungeon.hero.pointsInTalent(Talent.SOUL_SIPHON)/3f);
+				restoration = Math.round(restoration * 0.8f*Dungeon.hero.pointsInTalent(Talent.SOUL_SIPHON)/1.5f);
 			}
 			if (restoration > 0) {
-				Buff.affect(Dungeon.hero, Hunger.class).affectHunger(restoration*Dungeon.hero.pointsInTalent(Talent.SOUL_EATER)/3f);
+				Buff.affect(Dungeon.hero, Hunger.class).affectHunger(restoration*Dungeon.hero.pointsInTalent(Talent.SOUL_EATER)/1.5f);
 				Dungeon.hero.HP = (int) Math.ceil(Math.min(Dungeon.hero.HT, Dungeon.hero.HP + (restoration * 0.4f)));
 				Dungeon.hero.sprite.emitter().burst(Speck.factory(Speck.HEALING), 1);
 			}
@@ -954,7 +954,7 @@ public abstract class Mob extends Char {
 
 		if (!(this instanceof Wraith)
 				&& soulMarked
-				&& Random.Float() < (0.4f*Dungeon.hero.pointsInTalent(Talent.NECROMANCERS_MINIONS)/3f)){
+				&& Random.Float() < (0.8f*Dungeon.hero.pointsInTalent(Talent.NECROMANCERS_MINIONS)/1.5f)){
             Wraith w = Wraith.spawnAt(pos());
 			if (w != null) {
 				Buff.affect(w, Corruption.class);
@@ -1011,8 +1011,8 @@ public abstract class Mob extends Char {
 		//bounty hunter talent
 		if (Dungeon.hero.buff(Talent.BountyHunterTracker.class) != null) {
 			Preparation prep = Dungeon.hero.buff(Preparation.class);
-			if (prep != null && Random.Float() < 0.25f * prep.attackLevel()) {
-                Dungeon.level.drop(new Gold(15 * Dungeon.hero.pointsInTalent(Talent.BOUNTY_HUNTER)), pos()).sprite.drop();
+			if (prep != null && Random.Float() < 0.5f * prep.attackLevel()) {
+                Dungeon.level.drop(new Gold(30 * Dungeon.hero.pointsInTalent(Talent.BOUNTY_HUNTER)), pos()).sprite.drop();
 			}
 		}
 
@@ -1185,7 +1185,7 @@ public abstract class Mob extends Char {
 				float enemyStealth = enemy.stealth();
 
 				if (enemy instanceof Hero && ((Hero) enemy).hasTalent(Talent.SILENT_STEPS)){
-                    if (Dungeon.level.distance(pos(), enemy.pos()) >= 4 - ((Hero) enemy).pointsInTalent(Talent.SILENT_STEPS)) {
+                    if (Dungeon.level.distance(pos(), enemy.pos()) >= 16 - ((Hero) enemy).pointsInTalent(Talent.SILENT_STEPS)) {
 						enemyStealth = Float.POSITIVE_INFINITY;
 					}
 				}

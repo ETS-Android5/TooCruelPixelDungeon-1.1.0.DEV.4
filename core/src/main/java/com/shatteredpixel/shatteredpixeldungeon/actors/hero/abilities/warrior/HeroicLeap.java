@@ -58,7 +58,7 @@ public class HeroicLeap extends ArmorAbility {
 		float chargeUse = super.chargeUse(hero);
 		if (hero.buff(DoubleJumpTracker.class) != null){
 			//reduced charge use by 16%/30%/41%/50%
-			chargeUse *= Math.pow(0.84, hero.pointsInTalent(Talent.DOUBLE_JUMP));
+			chargeUse *= Math.pow(0.68, hero.pointsInTalent(Talent.DOUBLE_JUMP));
 		}
 		return chargeUse;
 	}
@@ -95,15 +95,15 @@ public class HeroicLeap extends ArmorAbility {
 						if (mob != null && mob != hero && mob.alignment != Char.Alignment.ALLY) {
 							if (hero.hasTalent(Talent.BODY_SLAM)){
 								int damage = hero.drRoll();
-								damage = Math.round(damage*0.25f*hero.pointsInTalent(Talent.BODY_SLAM));
+								damage = Math.round(damage*0.5f*hero.pointsInTalent(Talent.BODY_SLAM));
 								mob.damage(damage, hero);
 							}
 							if (mob.pos() == hero.pos() + i && hero.hasTalent(Talent.IMPACT_WAVE)){
 								Ballistica trajectory = new Ballistica(mob.pos(), mob.pos() + i, Ballistica.MAGIC_BOLT);
-								int strength = 1+hero.pointsInTalent(Talent.IMPACT_WAVE);
+								int strength = 2+hero.pointsInTalent(Talent.IMPACT_WAVE);
 								WandOfBlastWave.throwChar(mob, trajectory, strength, true);
-								if (Random.Int(4) < hero.pointsInTalent(Talent.IMPACT_WAVE)){
-									Buff.prolong(mob, Vulnerable.class, 3f);
+								if (Random.Int(2) < hero.pointsInTalent(Talent.IMPACT_WAVE)){
+									Buff.prolong(mob, Vulnerable.class, 6f);
 								}
 							}
 						}

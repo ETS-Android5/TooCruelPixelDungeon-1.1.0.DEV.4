@@ -264,7 +264,7 @@ public class Hero extends Char {
 		strBonus += Legendary.strBonus(this);
 
 		if (hasTalent(Talent.STRONGMAN)){
-			strBonus += (int)Math.floor(STR * (0.03f + 0.05f*pointsInTalent(Talent.STRONGMAN)));
+			strBonus += (int)Math.floor(STR * (0.06f + 0.1f*pointsInTalent(Talent.STRONGMAN)));
 		}
 
 		return STR + strBonus;
@@ -491,9 +491,9 @@ public class Hero extends Char {
 
 		if (wep instanceof MissileWeapon) {
 			if (Dungeon.level.adjacent(pos(), target.pos())) {
-				accuracy *= (0.5f + 0.2f * pointsInTalent(Talent.POINT_BLANK));
+				accuracy *= (1f + 0.4f * pointsInTalent(Talent.POINT_BLANK));
 			} else {
-				accuracy *= 1.5f;
+				accuracy *= 3f;
 			}
 		}
 
@@ -536,7 +536,7 @@ public class Hero extends Char {
 			return super.defenseVerb();
 		} else {
 			parry.parried = true;
-			if (buff(Combo.class).getComboCount() < 9 || pointsInTalent(Talent.ENHANCED_COMBO) < 2) {
+			if (buff(Combo.class).getComboCount() < 4 || pointsInTalent(Talent.ENHANCED_COMBO) < 2) {
 				parry.detach();
 			}
 			return Messages.get(Monk.class, "parried");
@@ -562,7 +562,7 @@ public class Hero extends Char {
 		}
 
 		if (buff(HoldFast.class) != null){
-			dr += Random.NormalIntRange(0, 2*pointsInTalent(Talent.HOLD_FAST));
+			dr += Random.NormalIntRange(1, 4*pointsInTalent(Talent.HOLD_FAST));
 		}
 
 		return dr;
@@ -606,7 +606,7 @@ public class Hero extends Char {
 
 		NaturesPower.naturesPowerTracker natStrength = buff(NaturesPower.naturesPowerTracker.class);
 		if (natStrength != null){
-			speed *= (2f + 0.25f*pointsInTalent(Talent.GROWING_POWER));
+			speed *= (4f + 0.5f*pointsInTalent(Talent.GROWING_POWER));
 		}
 
 		return speed;

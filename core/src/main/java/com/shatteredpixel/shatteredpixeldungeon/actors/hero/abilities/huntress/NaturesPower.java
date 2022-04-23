@@ -70,9 +70,9 @@ public class NaturesPower extends ArmorAbility {
 
 	public static class naturesPowerTracker extends FlavourBuff{
 
-		public static final float DURATION = 8f;
+		public static final float DURATION = 16f;
 
-		public int extensionsLeft = 2;
+		public int extensionsLeft = 4;
 
 		public void extend( int turns ){
 			if (extensionsLeft > 0 && turns > 0) {

@@ -94,7 +94,7 @@ public class Endure extends ArmorAbility {
 
 		public void setup(Hero hero){
 			enduring = true;
-			maxDmgTaken = (int) (hero.HT * Math.pow(0.67f, hero.pointsInTalent(Talent.SHRUG_IT_OFF)));
+			maxDmgTaken = (int) (hero.HT * Math.pow(0.335f, hero.pointsInTalent(Talent.SHRUG_IT_OFF)));
 			damageBonus = 0;
 			hitsLeft = 0;
 		}
@@ -123,15 +123,15 @@ public class Endure extends ArmorAbility {
 			}
 
 			enduring = false;
-			damageBonus *= 1f + 0.15f*Dungeon.hero.pointsInTalent(Talent.SUSTAINED_RETRIBUTION);
+			damageBonus *= 1f + 0.3f*Dungeon.hero.pointsInTalent(Talent.SUSTAINED_RETRIBUTION);
 
 			int nearby = 0;
 			for (Char ch : Actor.chars()){
-				if (ch.alignment == Char.Alignment.ENEMY && Dungeon.level.distance(target.pos(), ch.pos()) <= 2){
+				if (ch.alignment == Char.Alignment.ENEMY && Dungeon.level.distance(target.pos(), ch.pos()) <= 4){
 					nearby ++;
 				}
 			}
-			damageBonus *= 1f + (nearby*0.05f*Dungeon.hero.pointsInTalent(Talent.EVEN_THE_ODDS));
+			damageBonus *= 2f + (nearby*0.1f*Dungeon.hero.pointsInTalent(Talent.EVEN_THE_ODDS));
 
 			hitsLeft = 1+Dungeon.hero.pointsInTalent(Talent.SUSTAINED_RETRIBUTION);
 			damageBonus /= hitsLeft;
