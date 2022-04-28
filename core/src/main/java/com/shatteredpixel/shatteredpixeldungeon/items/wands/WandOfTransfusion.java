@@ -77,7 +77,7 @@ public class WandOfTransfusion extends Wand {
 			if (ch.alignment == Char.Alignment.ALLY || ch.buff(Charm.class) != null){
 				
 				// 5% of max hp
-				int selfDmg = Math.round(curUser.HT*0.05f);
+				int selfDmg = Math.round(curUser.HT*0.1f);
 				
 				int healing = selfDmg + 3*buffedLvl();
 				int shielding = (ch.HP + healing) - ch.HT;
@@ -90,7 +90,7 @@ public class WandOfTransfusion extends Wand {
 				
 				ch.HP += healing;
 				
-				ch.sprite.emitter().burst(Speck.factory(Speck.HEALING), 2 + buffedLvl() / 2);
+				ch.sprite.emitter().burst(Speck.factory(Speck.HEALING), 4 + buffedLvl());
 				ch.sprite.showStatus(CharSprite.POSITIVE, "+%dHP", healing + shielding);
 				
 				if (!freeCharge) {
@@ -107,14 +107,14 @@ public class WandOfTransfusion extends Wand {
 				
 				//chars living enemies
 				if (!ch.properties().contains(Char.Property.UNDEAD)) {
-					Charm charm = Buff.affect(ch, Charm.class, Charm.DURATION/2f);
+					Charm charm = Buff.affect(ch, Charm.class, Charm.DURATION);
 					charm.object = curUser.id();
 					charm.ignoreHeroAllies = true;
 					ch.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 3 );
 				
 				//harm the undead
 				} else {
-					ch.damage(Random.NormalIntRange(3 + buffedLvl()/2, 6+buffedLvl()), this);
+					ch.damage(Random.NormalIntRange(6 + buffedLvl()/4, 12+buffedLvl()), this);
 					ch.sprite.emitter().start(ShadowParticle.UP, 0.05f, 10 + buffedLvl());
 					Sample.INSTANCE.play(Assets.Sounds.BURNING);
 				}
@@ -141,7 +141,7 @@ public class WandOfTransfusion extends Wand {
 		if (defender.buff(Charm.class) != null && defender.buff(Charm.class).object == attacker.id()){
 			//grants a free use of the staff and shields self
 			freeCharge = true;
-			Buff.affect(attacker, Barrier.class).setShield(2*(5 + buffedLvl()));
+			Buff.affect(attacker, Barrier.class).setShield(4*(10 + buffedLvl()));
 			GLog.p( Messages.get(this, "charged") );
 			attacker.sprite.emitter().burst(BloodParticle.BURST, 20);
 		}

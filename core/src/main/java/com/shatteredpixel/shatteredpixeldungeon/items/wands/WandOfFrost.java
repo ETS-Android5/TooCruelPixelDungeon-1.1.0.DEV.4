@@ -46,11 +46,11 @@ public class WandOfFrost extends DamageWand {
 	}
 
 	public int min(int lvl){
-		return 2+lvl;
+		return 4+lvl;
 	}
 
 	public int max(int lvl){
-		return 8+5*lvl;
+		return 16+10*lvl;
 	}
 
 	@Override
@@ -71,8 +71,8 @@ public class WandOfFrost extends DamageWand {
 			}
 			if (ch.buff(Chill.class) != null){
 				//6.67% less damage per turn of chill remaining, to a max of 10 turns (50% dmg)
-				float chillturns = Math.min(10, ch.buff(Chill.class).cooldown());
-				damage = (int)Math.round(damage * Math.pow(0.9333f, chillturns));
+				float chillturns = Math.min(20, ch.buff(Chill.class).cooldown());
+				damage = (int)Math.round(damage * Math.pow(1.8666f, chillturns));
 			} else {
 				ch.sprite.burst( 0xFF99CCFF, buffedLvl() / 2 + 2 );
 			}
@@ -83,9 +83,9 @@ public class WandOfFrost extends DamageWand {
 
 			if (ch.isAlive()){
 				if (Dungeon.level.water[ch.pos()])
-					Buff.affect(ch, Chill.class, 4+buffedLvl());
+					Buff.affect(ch, Chill.class, 8+buffedLvl());
 				else
-					Buff.affect(ch, Chill.class, 2+buffedLvl());
+					Buff.affect(ch, Chill.class, 4+buffedLvl());
 			}
 		} else {
 			Dungeon.level.pressCell(bolt.collisionPos);

@@ -43,7 +43,7 @@ public class Affection extends Glyph {
 		// lvl 0 - 15%
 		// lvl 1 ~ 19%
 		// lvl 2 ~ 23%
-		if (Random.Int( level + 20 ) >= 17) {
+		if (Random.Int( 4 ) == 0) {
 
 			Buff.affect( attacker, Charm.class, Charm.DURATION ).object = defender.id();
 			attacker.sprite.centerEmitter().start( Speck.factory( Speck.HEART ), 0.2f, 5 );

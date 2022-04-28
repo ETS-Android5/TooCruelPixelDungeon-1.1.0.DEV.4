@@ -60,12 +60,12 @@ public class WandOfFireblast extends DamageWand {
 
 	//1x/2x/3x damage
 	public int min(int lvl){
-		return (1+lvl) * chargesPerCast();
+		return (2+lvl) * chargesPerCast();
 	}
 
 	//1x/2x/3x damage
 	public int max(int lvl){
-		return (6+2*lvl) * chargesPerCast();
+		return (12+4*lvl) * chargesPerCast();
 	}
 
 	ConeAOE cone;
@@ -122,10 +122,10 @@ public class WandOfFireblast extends DamageWand {
 					case 1:
 						break; //no effects
 					case 2:
-						Buff.affect(ch, Cripple.class, 4f);
+						Buff.affect(ch, Cripple.class, 8f);
 						break;
 					case 3:
-						Buff.affect(ch, Paralysis.class, 4f);
+						Buff.affect(ch, Paralysis.class, 8f);
 						break;
 				}
 			}
@@ -143,12 +143,12 @@ public class WandOfFireblast extends DamageWand {
 		//need to perform flame spread logic here so we can determine what cells to put flames in.
 
 		// 5/7/9 distance
-		int maxDist = 3 + 2*chargesPerCast();
+		int maxDist = 6 + 4*chargesPerCast();
 		int dist = Math.min(bolt.dist, maxDist);
 
 		cone = new ConeAOE( bolt,
 				maxDist,
-				30 + 20*chargesPerCast(),
+				60 + 40*chargesPerCast(),
 				Ballistica.STOP_TARGET | Ballistica.STOP_SOLID | Ballistica.IGNORE_SOFT_SOLID);
 
 		//cast to cells at the tip, rather than all cells, better performance.
@@ -177,7 +177,7 @@ public class WandOfFireblast extends DamageWand {
 			return 1;
 		}
 		//consumes 30% of current charges, rounded up, with a min of 1 and a max of 3.
-		return (int) GameMath.gate(1, (int)Math.ceil(curCharges*0.3f), 3);
+		return (int) GameMath.gate(1, (int)Math.ceil(curCharges*0.15f), 3);
 	}
 
 	@Override

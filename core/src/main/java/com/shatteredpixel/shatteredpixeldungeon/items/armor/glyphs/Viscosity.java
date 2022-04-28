@@ -69,7 +69,7 @@ public class Viscosity extends Glyph {
 
 		int level = Math.max( 0, armor.buffedLvl() );
 		
-		float percent = (level+1)/(float)(level+6);
+		float percent = (level+2)/(float)(level+12);
 		int amount = (int)Math.ceil(realDamage * percent);
 
 		DeferedDamage deferred = Buff.affect( defender, DeferedDamage.class );

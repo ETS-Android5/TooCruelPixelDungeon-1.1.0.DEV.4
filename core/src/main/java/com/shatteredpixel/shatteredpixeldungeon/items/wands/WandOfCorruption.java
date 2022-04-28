@@ -87,35 +87,35 @@ public class WandOfCorruption extends Wand {
 	static{
 		MINOR_DEBUFFS.put(Weakness.class,       2f);
 		MINOR_DEBUFFS.put(Vulnerable.class,     2f);
-		MINOR_DEBUFFS.put(Cripple.class,        1f);
-		MINOR_DEBUFFS.put(Blindness.class,      1f);
-		MINOR_DEBUFFS.put(Terror.class,         1f);
+		MINOR_DEBUFFS.put(Cripple.class,        2f);
+		MINOR_DEBUFFS.put(Blindness.class,      2f);
+		MINOR_DEBUFFS.put(Terror.class,         2f);
 		
-		MINOR_DEBUFFS.put(Chill.class,          0f);
-		MINOR_DEBUFFS.put(Ooze.class,           0f);
-		MINOR_DEBUFFS.put(Roots.class,          0f);
-		MINOR_DEBUFFS.put(Vertigo.class,        0f);
-		MINOR_DEBUFFS.put(Drowsy.class,         0f);
-		MINOR_DEBUFFS.put(Bleeding.class,       0f);
-		MINOR_DEBUFFS.put(Burning.class,        0f);
-		MINOR_DEBUFFS.put(Poison.class,         0f);
+		MINOR_DEBUFFS.put(Chill.class,          2f);
+		MINOR_DEBUFFS.put(Ooze.class,           2f);
+		MINOR_DEBUFFS.put(Roots.class,          2f);
+		MINOR_DEBUFFS.put(Vertigo.class,        2f);
+		MINOR_DEBUFFS.put(Drowsy.class,         2f);
+		MINOR_DEBUFFS.put(Bleeding.class,       2f);
+		MINOR_DEBUFFS.put(Burning.class,        2f);
+		MINOR_DEBUFFS.put(Poison.class,         2f);
 	}
 	
-	private static final float MAJOR_DEBUFF_WEAKEN = 1/2f;
+	private static final float MAJOR_DEBUFF_WEAKEN = 1f;
 	private static final HashMap<Class<? extends Buff>, Float> MAJOR_DEBUFFS = new HashMap<>();
 	static{
 		MAJOR_DEBUFFS.put(Amok.class,           3f);
 		MAJOR_DEBUFFS.put(Slow.class,           2f);
 		MAJOR_DEBUFFS.put(Hex.class,            2f);
-		MAJOR_DEBUFFS.put(Paralysis.class,      1f);
+		MAJOR_DEBUFFS.put(Paralysis.class,      2f);
 
-		MAJOR_DEBUFFS.put(Dread.class,          0f);
-		MAJOR_DEBUFFS.put(Charm.class,          0f);
-		MAJOR_DEBUFFS.put(MagicalSleep.class,   0f);
-		MAJOR_DEBUFFS.put(SoulMark.class,       0f);
-		MAJOR_DEBUFFS.put(Corrosion.class,      0f);
-		MAJOR_DEBUFFS.put(Frost.class,          0f);
-		MAJOR_DEBUFFS.put(Doom.class,           0f);
+		MAJOR_DEBUFFS.put(Dread.class,          2f);
+		MAJOR_DEBUFFS.put(Charm.class,          2f);
+		MAJOR_DEBUFFS.put(MagicalSleep.class,   2f);
+		MAJOR_DEBUFFS.put(SoulMark.class,       2f);
+		MAJOR_DEBUFFS.put(Corrosion.class,      2f);
+		MAJOR_DEBUFFS.put(Frost.class,          2f);
+		MAJOR_DEBUFFS.put(Doom.class,           2f);
 	}
 	
 	@Override
@@ -130,24 +130,24 @@ public class WandOfCorruption extends Wand {
 
 			Mob enemy = (Mob) ch;
 
-			float corruptingPower = 3 + buffedLvl()/2f;
+			float corruptingPower = 6 + 2 *buffedLvl();
 			
 			//base enemy resistance is usually based on their exp, but in special cases it is based on other criteria
-			float enemyResist = 1 + enemy.EXP;
+			float enemyResist = 2 + enemy.EXP;
 			if (ch instanceof Mimic || ch instanceof Statue){
-				enemyResist = 1 + Dungeon.scalingFactor();
+				enemyResist =21 + Dungeon.scalingFactor();
 			} else if (ch instanceof Piranha || ch instanceof Bee) {
-				enemyResist = 1 + Dungeon.scalingFactor()/2f;
+				enemyResist = 2 + Dungeon.scalingFactor()/1f;
 			} else if (ch instanceof Wraith) {
 				//divide by 5 as wraiths are always at full HP and are therefore ~5x harder to corrupt
-				enemyResist = (1f + Dungeon.scalingFactor()/3f) / 5f;
+				enemyResist = (1f + Dungeon.scalingFactor()/1.5f) / 2.5f;
 			} else if (ch instanceof Swarm){
 				//child swarms don't give exp, so we force this here.
 				enemyResist = 1 + 3;
 			}
 			
 			//100% health: 5x resist   75%: 3.25x resist   50%: 2x resist   25%: 1.25x resist
-			enemyResist *= 1 + 4*Math.pow(enemy.HP/(float)enemy.HT, 2);
+			enemyResist *= 2 + 8*Math.pow(enemy.HP/(float)enemy.HT, 4);
 			
 			//debuffs placed on the enemy reduce their resistance
 			for (Buff buff : enemy.buffs()){
@@ -199,7 +199,7 @@ public class WandOfCorruption extends Wand {
 		Class<?extends FlavourBuff> debuffCls = (Class<? extends FlavourBuff>) Random.chances(debuffs);
 		
 		if (debuffCls != null){
-			Buff.append(enemy, debuffCls, 6 + buffedLvl()*3);
+			Buff.append(enemy, debuffCls, 12 + buffedLvl()*6);
 		} else {
 			//if no debuff can be applied (all are present), then go up one tier
 			if (category == MINOR_DEBUFFS)          debuffEnemy( enemy, MAJOR_DEBUFFS);
@@ -228,8 +228,8 @@ public class WandOfCorruption extends Wand {
 		// lvl 0 - 25%
 		// lvl 1 - 40%
 		// lvl 2 - 50%
-		if (Random.Int( buffedLvl() + 4 ) >= 3){
-			Buff.prolong( defender, Amok.class, 4+ buffedLvl()*2);
+		if (Random.Int( buffedLvl() + 8 ) >= 3){
+			Buff.prolong( defender, Amok.class, 8+ buffedLvl()*4);
 		}
 	}
 

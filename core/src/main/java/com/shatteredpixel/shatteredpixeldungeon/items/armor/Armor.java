@@ -292,10 +292,10 @@ public class Armor extends EquipableItem {
 
 	public int DRMax(int lvl){
 		if (Challenges.FAITH_ARMOR.enabled()){
-			return 1 + tier + lvl + augment.defenseFactor(lvl);
+			return 2 + tier + lvl + augment.defenseFactor(lvl);
 		}
 
-		int max = tier * (2 + lvl) + augment.defenseFactor(lvl);
+		int max = tier * (4 + lvl) + augment.defenseFactor(lvl);
 		if (lvl > max){
 			return ((lvl - max)+1)/2;
 		} else {
@@ -355,9 +355,9 @@ public class Armor extends EquipableItem {
 					break;
 				}
 			}
-			if (!enemyNear) speed *= (1.2f + 0.04f * buffedLvl());
+			if (!enemyNear) speed *= (2.4f + 0.08f * buffedLvl());
 		} else if (hasGlyph(Flow.class, owner) && Dungeon.level.water[owner.pos()]){
-			speed *= (2f + 0.25f*buffedLvl());
+			speed *= (4f + 0.5f*buffedLvl());
 		}
 
 		if (hasGlyph(Bulk.class, owner) &&
@@ -373,7 +373,7 @@ public class Armor extends EquipableItem {
 	public float stealthFactor( Char owner, float stealth ){
 
 		if (hasGlyph(Obfuscation.class, owner)){
-			stealth += 1 + buffedLvl()/3f;
+			stealth += 2 + buffedLvl()/1.5f;
 		}
 
 		return stealth;
@@ -525,7 +525,7 @@ public class Armor extends EquipableItem {
 		if (effectRoll < 0.3f|| Challenges.CURSED.enabled()) {
 			inscribe(Glyph.randomCurse());
 			cursed = true;
-		} else if (effectRoll >= 0.85f){
+		} else if (effectRoll >= 0.7f){
 			inscribe();
 		}
 

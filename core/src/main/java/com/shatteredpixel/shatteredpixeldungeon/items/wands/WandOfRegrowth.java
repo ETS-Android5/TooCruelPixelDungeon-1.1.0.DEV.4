@@ -110,7 +110,7 @@ public class WandOfRegrowth extends Wand {
 		}
 
 		int chrgUsed = chargesPerCast();
-		int grassToPlace = Math.round((3.67f+buffedLvl()/3f)*chrgUsed);
+		int grassToPlace = Math.round((7.34f+buffedLvl()/1.5f)*chrgUsed);
 
 		//ignore cells which can't have anything grow in them.
 		for (Iterator<Integer> i = cells.iterator(); i.hasNext();) {
@@ -223,7 +223,7 @@ public class WandOfRegrowth extends Wand {
 			//8 charges at base, plus:
 			//2/3.33/5/7/10/14/20/30/50/110/infinite charges per hero level, based on wand level
 			float lvl = wandLevel;
-			return Math.round(8 + heroLvl * (2+lvl) * (1f + (lvl/(10 - lvl))));
+			return Math.round(16 + heroLvl * (4+lvl) * (2f + (lvl/(20 - lvl))));
 		}
 	}
 
@@ -246,7 +246,7 @@ public class WandOfRegrowth extends Wand {
 			// lvl 0 - 16%
 			// lvl 1 - 21%
 			// lvl 2 - 25%
-			int healing = Math.round(damage * (level + 2f) / (level + 6f) / 2f);
+			int healing = Math.round(damage * (level + 4f) / (level + 12f) / 1f);
 			Buff.affect(attacker, Sungrass.Health.class).boost(healing);
 		}
 
@@ -255,12 +255,12 @@ public class WandOfRegrowth extends Wand {
 	public void fx(Ballistica bolt, Callback callback) {
 
 		// 4/6/8 distance
-		int maxDist = 2 + 2*chargesPerCast();
+		int maxDist = 4 + 4*chargesPerCast();
 		int dist = Math.min(bolt.dist, maxDist);
 
 		cone = new ConeAOE( bolt,
 				maxDist,
-				20 + 10*chargesPerCast(),
+				40 + 20*chargesPerCast(),
 				Ballistica.STOP_SOLID | Ballistica.STOP_TARGET);
 
 		//cast to cells at the tip, rather than all cells, better performance.
@@ -296,7 +296,7 @@ public class WandOfRegrowth extends Wand {
 		String desc = Messages.get(this, "stats_desc", chargesPerCast());
 		if (isIdentified()){
 			int chargeLeft = chargeLimit(Dungeon.hero.lvl) - totChrgUsed;
-			if (chargeLeft < 10000) desc += " " + Messages.get(this, "degradation", Math.max(chargeLeft, 0));
+			if (chargeLeft < 20000) desc += " " + Messages.get(this, "degradation", Math.max(chargeLeft, 0));
 		}
 		return desc;
 	}
@@ -422,7 +422,7 @@ public class WandOfRegrowth extends Wand {
 
 		private void setLevel( int lvl ){
 			wandLvl = lvl;
-			HP = HT = 25 + 3*lvl;
+			HP = HT = 50 + 6*lvl;
 		}
 
 		public boolean inRange(int pos){
@@ -430,7 +430,7 @@ public class WandOfRegrowth extends Wand {
 		}
 
 		public float seedPreservation(){
-			return 0.40f + 0.04f*wandLvl;
+			return 0.80f + 0.08f*wandLvl;
 		}
 
 		@Override

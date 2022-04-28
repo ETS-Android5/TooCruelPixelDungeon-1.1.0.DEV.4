@@ -54,7 +54,7 @@ public class WandOfWarding extends Wand {
 		for (Buff buff : curUser.buffs()){
 			if (buff instanceof Wand.Charger){
 				if (((Charger) buff).wand() instanceof WandOfWarding){
-					maxWardEnergy += 2 + ((Charger) buff).wand().level();
+					maxWardEnergy += 4 + ((Charger) buff).wand().level();
 				}
 			}
 		}
@@ -144,7 +144,7 @@ public class WandOfWarding extends Wand {
 		// lvl 0 - 20%
 		// lvl 1 - 33%
 		// lvl 2 - 43%
-		if (Random.Int( level + 5 ) >= 4) {
+		if (Random.Int( level + 10 ) >= 2) {
 			for (Char ch : Actor.chars()){
 				if (ch instanceof Ward){
 					((Ward) ch).wandHeal(staff.buffedLvl());
@@ -205,16 +205,16 @@ public class WandOfWarding extends Wand {
 				case 1: case 2: default:
 					break; //do nothing
 				case 3:
-					HT = 35;
-					HP = 15 + (5-totalZaps)*4;
+					HT = 70;
+					HP = 30 + (5-totalZaps)*8;
 					break;
 				case 4:
-					HT = 54;
-					HP += 19;
+					HT = 108;
+					HP += 38;
 					break;
 				case 5:
-					HT = 84;
-					HP += 30;
+					HT = 168;
+					HP += 60;
 					break;
 				case 6:
 					wandHeal(wandLevel);
@@ -247,13 +247,13 @@ public class WandOfWarding extends Wand {
 				default:
 					return;
 				case 4:
-					heal = Math.round(9 * healFactor);
+					heal = Math.round(18 * healFactor);
 					break;
 				case 5:
-					heal = Math.round(12 * healFactor);
+					heal = Math.round(24 * healFactor);
 					break;
 				case 6:
-					heal = Math.round(16 * healFactor);
+					heal = Math.round(32 * healFactor);
 					break;
 			}
 
@@ -265,7 +265,7 @@ public class WandOfWarding extends Wand {
 		@Override
 		public int defenseSkill(Char enemy) {
 			if (tier > 3){
-				defenseSkill = 4 + Dungeon.scalingFactor();
+				defenseSkill = 8 + Dungeon.scalingFactor();
 			}
 			return super.defenseSkill(enemy);
 		}
@@ -273,7 +273,7 @@ public class WandOfWarding extends Wand {
 		@Override
 		public int drRoll() {
 			if (tier > 3){
-				return Math.round(Random.NormalIntRange(0, 3 + Dungeon.scalingFactor()/2) / (7f - tier));
+				return Math.round(Random.NormalIntRange(0, 6 + Dungeon.scalingFactor()/1) / (7f - tier));
 			} else {
 				return 0;
 			}
@@ -300,7 +300,7 @@ public class WandOfWarding extends Wand {
 			spend( 1f );
 
 			//always hits
-			int dmg = Random.NormalIntRange( 2 + wandLevel, 8 + 4*wandLevel );
+			int dmg = Random.NormalIntRange( 4 + wandLevel, 16 + 8*wandLevel );
 			enemy.damage( dmg, this );
 			if (enemy.isAlive()){
 				Wand.wandProc(enemy, wandLevel, 1);
@@ -420,7 +420,7 @@ public class WandOfWarding extends Wand {
 		public void restoreFromBundle(Bundle bundle) {
 			super.restoreFromBundle(bundle);
 			tier = bundle.getInt(TIER);
-			viewDistance = 3 + tier;
+			viewDistance = 6 + tier;
 			wandLevel = bundle.getInt(WAND_LEVEL);
 			totalZaps = bundle.getInt(TOTAL_ZAPS);
 		}

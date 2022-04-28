@@ -39,7 +39,7 @@ import java.util.Comparator;
 
 public class StoneOfDisarming extends Runestone {
 	
-	private static final int DIST = 8;
+	private static final int DIST = 16;
 	
 	{
 		image = ItemSpriteSheet.STONE_DISARM;

@@ -67,7 +67,7 @@ public class StoneOfAggression extends Runestone {
 
 	public static class Aggression extends FlavourBuff {
 		
-		public static final float DURATION = 20f;
+		public static final float DURATION = 99999f;
 		
 		{
 			type = buffType.NEGATIVE;

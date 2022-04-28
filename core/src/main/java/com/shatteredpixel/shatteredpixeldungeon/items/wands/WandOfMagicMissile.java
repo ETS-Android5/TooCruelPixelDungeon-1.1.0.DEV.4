@@ -45,11 +45,11 @@ public class WandOfMagicMissile extends DamageWand {
 	}
 
 	public int min(int lvl){
-		return 2+lvl;
+		return 4+lvl;
 	}
 
 	public int max(int lvl){
-		return 8+2*lvl;
+		return 16+4*lvl;
 	}
 	
 	@Override
@@ -82,7 +82,7 @@ public class WandOfMagicMissile extends DamageWand {
 		SpellSprite.show(attacker, SpellSprite.CHARGE);
 		for (Wand.Charger c : attacker.buffs(Wand.Charger.class)){
 			if (c.wand() != this){
-				c.gainCharge(0.5f);
+				c.gainCharge(1f);
 			}
 		}
 
@@ -99,7 +99,7 @@ public class WandOfMagicMissile extends DamageWand {
 			announced = true;
 		}
 
-		public static float DURATION = 4f;
+		public static float DURATION = 8f;
 
 		private int level = 0;
 		private Wand wandJustApplied; //we don't bundle this as it's only used right as the buff is applied

@@ -42,10 +42,10 @@ public class Potential extends Glyph {
 		// lvl 0 - 16.7%
 		// lvl 1 - 28.6%
 		// lvl 2 - 37.5%
-		if (defender instanceof Hero && Random.Int( level + 6 ) >= 5 ) {
-			int wands = ((Hero) defender).belongings.charge( 1f );
+		if (defender instanceof Hero && Random.Int( 4 ) == 0 ) {
+			int wands = ((Hero) defender).belongings.charge( 2f );
 			if (wands > 0) {
-				defender.sprite.centerEmitter().burst(EnergyParticle.FACTORY, 10);
+				defender.sprite.centerEmitter().burst(EnergyParticle.FACTORY, 20);
 			}
 		}
 		
