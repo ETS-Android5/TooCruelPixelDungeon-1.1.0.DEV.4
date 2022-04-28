@@ -34,19 +34,19 @@ import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Point;
 
 public class StoneOfClairvoyance extends Runestone {
-	
-	private static final int DIST = 40;
-	
+
+	private static final int DIST = 20;
+
 	{
 		image = ItemSpriteSheet.STONE_CLAIRVOYANCE;
 	}
-	
+
 	@Override
 	protected void activate(final int cell) {
 		Point c = Dungeon.level.cellToPoint(cell);
-		
+
 		int[] rounding = ShadowCaster.rounding[DIST];
-		
+
 		int left, right;
 		int curr;
 		boolean noticed = false;
@@ -66,30 +66,28 @@ public class StoneOfClairvoyance extends Runestone {
 
 				GameScene.effectOverFog( new CheckedCell( curr, cell ) );
 				Dungeon.level.mapped[curr] = true;
-				
+
 				if (Dungeon.level.secret[curr]) {
 					Dungeon.level.discover(curr);
-					
+
 					if (Dungeon.level.heroFOV[curr]) {
 						GameScene.discoverTile(curr, Dungeon.level.map[curr]);
 						ScrollOfMagicMapping.discover(curr);
 						noticed = true;
 					}
 				}
-				
+
 			}
 		}
-		
+
 		if (noticed) {
 			Sample.INSTANCE.play( Assets.Sounds.SECRET );
 		}
-		
-		if(curUser.buff(Amnesia.class)!=null)curUser.buff(Amnesia.class).postpone(TIME_TO_THROW);
-		
+
 		Sample.INSTANCE.play( Assets.Sounds.TELEPORT );
 		GameScene.updateFog();
-		
-		
+
+
 	}
-	
+
 }

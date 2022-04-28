@@ -51,7 +51,7 @@ public class FluidTriWand extends TriWand {
 
 	private int maxSnakeLength(int level) {
 		// 1 additional tile every 5 levels
-		return 3 + level / 5;
+		return 6 + level / 5;
 	}
 
 	@Override

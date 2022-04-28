@@ -15,7 +15,7 @@ allprojects {
         appPackageName = 'com.hahhujanapi.ntcpd'
 
         appVersionCode = 2810
-        appVersionName = '1.1-dev'
+        appVersionName = '1.2a-dev'
         appJavaCompatibility = JavaVersion.VERSION_1_8
 
         appAndroidCompileSDK = 31

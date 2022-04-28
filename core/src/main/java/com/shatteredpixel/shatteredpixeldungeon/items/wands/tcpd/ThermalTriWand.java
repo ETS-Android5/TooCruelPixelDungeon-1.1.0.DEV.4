@@ -58,7 +58,7 @@ public class ThermalTriWand extends TriWand {
 
 	private static final int aoeBallisticaParams = Ballistica.STOP_TARGET | Ballistica.STOP_SOLID | Ballistica.IGNORE_SOFT_SOLID;
 
-	public static final float ELEMENTAL_BONUS = 4 / 3f;
+	public static final float ELEMENTAL_BONUS = 8 / 1.5f;
 
 	private static Set<Integer> aoe( boolean augmented, Ballistica target, Predicate<Integer> filter, Consumer<Integer> action ) {
 		int[] aoe = augmented ? PathFinder.NEIGHBOURS25 : PathFinder.NEIGHBOURS9;

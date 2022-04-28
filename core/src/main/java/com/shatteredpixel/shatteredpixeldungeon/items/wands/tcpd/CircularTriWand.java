@@ -54,7 +54,7 @@ public class CircularTriWand extends TriWand {
 		collisionProperties = Ballistica.PROJECTILE;
 	}
 
-	private static final float UNDEAD_BONUS = 4 / 3f;
+	private static final float UNDEAD_BONUS = 8 / 1.5f;
 
 	private class StormEffect extends WandEffect {
 

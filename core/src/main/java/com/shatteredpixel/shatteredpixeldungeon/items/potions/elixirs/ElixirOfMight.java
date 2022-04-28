@@ -101,7 +101,7 @@ public class ElixirOfMight extends Elixir {
 		}
 		
 		public static int boost(int HT){
-			return Math.round(8 + HT/10f);
+			return Math.round(4 + HT/10f);
 		}
 		
 		public void onLevelUp(){
