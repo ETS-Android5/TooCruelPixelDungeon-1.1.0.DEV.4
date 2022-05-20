@@ -109,7 +109,7 @@ public class Shockwave extends ArmorAbility {
 							if (ch != null && ch.alignment != hero.alignment){
 								int scalingStr = hero.STR()-10;
 								int damage = Random.NormalIntRange(5 + scalingStr, 10 + 2*scalingStr);
-								damage = Math.round(damage * (1f + 0.2f*hero.pointsInTalent(Talent.SHOCK_FORCE)));
+								damage = Math.round(damage * (1f + 0.4f*hero.pointsInTalent(Talent.SHOCK_FORCE)));
 								damage -= ch.drRoll();
 
 								if (hero.pointsInTalent(Talent.STRIKING_WAVE) == 4){
@@ -127,9 +127,9 @@ public class Shockwave extends ArmorAbility {
 								}
 								if (ch.isAlive()){
 									if (Random.Int(4) < hero.pointsInTalent(Talent.SHOCK_FORCE)){
-										Buff.affect(ch, Paralysis.class, 5f);
+										Buff.affect(ch, Paralysis.class, 10f);
 									} else {
-										Buff.affect(ch, Cripple.class, 5f);
+										Buff.affect(ch, Cripple.class, 10f);
 									}
 								}
 

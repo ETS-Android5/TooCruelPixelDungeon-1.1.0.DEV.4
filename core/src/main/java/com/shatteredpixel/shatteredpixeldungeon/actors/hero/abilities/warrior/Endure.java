@@ -133,7 +133,7 @@ public class Endure extends ArmorAbility {
 			}
 			damageBonus *= 2f + (nearby*0.1f*Dungeon.hero.pointsInTalent(Talent.EVEN_THE_ODDS));
 
-			hitsLeft = 1+Dungeon.hero.pointsInTalent(Talent.SUSTAINED_RETRIBUTION);
+			hitsLeft = 2+2*Dungeon.hero.pointsInTalent(Talent.SUSTAINED_RETRIBUTION);
 			damageBonus /= hitsLeft;
 
 			if (damageBonus > 0) {

@@ -790,7 +790,7 @@ public class Hero extends Char {
 		}
 
 		if (hasTalent(Talent.BARKSKIN) && Dungeon.level.map[pos()] == Terrain.FURROWED_GRASS) {
-			Buff.affect(this, Barkskin.class).set( (lvl*pointsInTalent(Talent.BARKSKIN))/2, 1 );
+			Buff.affect(this, Barkskin.class).set( (lvl*pointsInTalent(Talent.BARKSKIN))/1, 1 );
 		}
 
 		return actResult;
@@ -2063,7 +2063,7 @@ public class Hero extends Char {
 		boolean smthFound = false;
 
 		boolean circular = pointsInTalent(Talent.WIDE_SEARCH) == 1;
-		int distance = heroClass == HeroClass.ROGUE ? 2 : 1;
+		int distance = heroClass == HeroClass.ROGUE ? 4 : 1;
 		if (hasTalent(Talent.WIDE_SEARCH)) distance++;
 
 		boolean foresight = buff(Foresight.class) != null;

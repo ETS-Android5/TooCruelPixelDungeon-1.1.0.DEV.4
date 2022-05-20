@@ -1012,7 +1012,7 @@ public abstract class Mob extends Char {
 		if (Dungeon.hero.buff(Talent.BountyHunterTracker.class) != null) {
 			Preparation prep = Dungeon.hero.buff(Preparation.class);
 			if (prep != null && Random.Float() < 0.5f * prep.attackLevel()) {
-                Dungeon.level.drop(new Gold(30 * Dungeon.hero.pointsInTalent(Talent.BOUNTY_HUNTER)), pos()).sprite.drop();
+                Dungeon.level.drop(new Gold(225 * Dungeon.hero.pointsInTalent(Talent.BOUNTY_HUNTER)), pos()).sprite.drop();
 			}
 		}
 
@@ -1185,12 +1185,12 @@ public abstract class Mob extends Char {
 				float enemyStealth = enemy.stealth();
 
 				if (enemy instanceof Hero && ((Hero) enemy).hasTalent(Talent.SILENT_STEPS)){
-                    if (Dungeon.level.distance(pos(), enemy.pos()) >= 16 - ((Hero) enemy).pointsInTalent(Talent.SILENT_STEPS)) {
+                    if (Dungeon.level.distance(pos(), enemy.pos()) >= 8 - ((Hero) enemy).pointsInTalent(Talent.SILENT_STEPS)) {
 						enemyStealth = Float.POSITIVE_INFINITY;
 					}
 				}
 
-				if (Random.Float( distance( enemy ) + enemyStealth ) < 1) {
+				if (Random.Float( distance( enemy ) + enemyStealth ) < 2) {
 					awaken(enemyInFOV);
 					return true;
 				}

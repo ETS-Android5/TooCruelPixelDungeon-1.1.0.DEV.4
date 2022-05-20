@@ -110,7 +110,7 @@ public class SpectralBlades extends ArmorAbility {
 				@Override
 				public void call() {
 					float dmgMulti = ch == enemy ? 1f : 0.5f;
-					float accmulti = 1f + 0.5f*hero.pointsInTalent(Talent.PROJECTING_BLADES);
+					float accmulti = 1f + 1f*hero.pointsInTalent(Talent.PROJECTING_BLADES);
 					if (hero.hasTalent(Talent.SPIRIT_BLADES)){
 						Buff.affect(hero, Talent.SpiritBladesTracker.class, 0f);
 					}

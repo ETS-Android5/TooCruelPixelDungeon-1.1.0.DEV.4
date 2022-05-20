@@ -119,7 +119,7 @@ public class HeroicLeap extends ArmorAbility {
 						hero.buff(DoubleJumpTracker.class).detach();
 					} else {
 						if (hero.hasTalent(Talent.DOUBLE_JUMP)) {
-							Buff.affect(hero, DoubleJumpTracker.class, 3);
+							Buff.affect(hero, DoubleJumpTracker.class, 6);
 						}
 					}
 				}

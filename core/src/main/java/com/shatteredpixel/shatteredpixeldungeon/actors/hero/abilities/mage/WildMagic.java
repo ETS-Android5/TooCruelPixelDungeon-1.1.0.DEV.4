@@ -75,7 +75,7 @@ public class WildMagic extends ArmorAbility {
 			}
 		}
 
-		int maxWands = 8 + Dungeon.hero.pointsInTalent(Talent.FIRE_EVERYTHING);
+		int maxWands = 8 +  2* Dungeon.hero.pointsInTalent(Talent.FIRE_EVERYTHING);
 
 		//second and third shots
 		if (wands.size() < maxWands){
@@ -87,7 +87,7 @@ public class WildMagic extends ArmorAbility {
 				if (totalCharge < 2*chargeUsePerShot){
 					seconds.remove(w);
 				}
-				if (totalCharge < 3*chargeUsePerShot
+				if (totalCharge < 6*chargeUsePerShot
 					|| Random.Int(4) > Dungeon.hero.pointsInTalent(Talent.CONSERVED_MAGIC)){
 					thirds.remove(w);
 				}

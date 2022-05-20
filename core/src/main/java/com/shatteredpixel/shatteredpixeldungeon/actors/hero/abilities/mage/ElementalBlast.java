@@ -143,7 +143,7 @@ public class ElementalBlast extends ArmorAbility {
 			return;
 		}
 
-		int aoeSize = 8 + hero.pointsInTalent(Talent.BLAST_RADIUS);
+		int aoeSize = 8 + 2 *hero.pointsInTalent(Talent.BLAST_RADIUS);
 
 		int projectileProps = Ballistica.STOP_SOLID | Ballistica.STOP_TARGET;
 
